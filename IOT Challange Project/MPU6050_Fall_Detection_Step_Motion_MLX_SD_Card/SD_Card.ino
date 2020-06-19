@@ -11,31 +11,24 @@
 TMRpcm tmrpcm;
 File root;
 
-void SD_Setup()
-{
-Serial.begin(9600);
-Serial.print("Initializing SD card...");
-if(!SD.begin(SD_ChipSelectPin))
-{
-  Serial.println("SD fail");
-  return;
-}
-  Serial.println("OK!");
+void SD_Setup(void){
+  Serial.print("Initializing SD card...");
+  if(!SD.begin(SD_ChipSelectPin))
+  {
+    Serial.println("SD fail");
+    return;
+  }
+    Serial.println("OK!");
 
 
-tmrpcm.speakerPin = 9;
-root = SD.open("/");      // open SD card main root
-tmrpcm.setVolume(10);
-tmrpcm.quality(1);      //  Set 1 for 2x oversampling Set 0 for normal
-
-
-
-
+  tmrpcm.speakerPin = 9;   
+      
+  tmrpcm.setVolume(10);
+  tmrpcm.quality(1);      //  Set 1 for 2x oversampling Set 0 for normal
+  
 }
 
-// main loop
-void SD_Loop() {
- 
+void SD_Loop(void){
   if ( !tmrpcm.isPlaying() ) {
     // no audio file is playing
       File entry =  root.openNextFile();  // open next file
@@ -44,9 +37,7 @@ void SD_Loop() {
         root.rewindDirectory();  // go to start of the folder
         return;
       }
- 
-    uint8_t nameSize = String(entry.name()).length();  // get file name size
-    String str1 = String(entry.name()).substring( nameSize - 4 );  // save the last 4 characters (file extension)
+     String str1 = String(entry.name()); 
  
     if ( str1.equalsIgnoreCase(".wav") ) {
       // the opened file has '.wav' extension
@@ -54,12 +45,7 @@ void SD_Loop() {
       Serial.print("Playing file: ");
       Serial.println( entry.name() );
     }
- 
-    else {
-      // not '.wav' format file
-      entry.close();
-      return;
+
     }
- }
-}
+   }
  
