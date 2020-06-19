@@ -1,3 +1,8 @@
+#include <Adafruit_MLX90614.h>  
+
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+
+millisDelay mlxDelay;
 
 void MLX_Setup(void){
   mlx.begin();

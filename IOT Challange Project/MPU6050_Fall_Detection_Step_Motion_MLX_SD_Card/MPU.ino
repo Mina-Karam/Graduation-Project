@@ -1,3 +1,10 @@
+#include <MPU6050.h>   
+         
+MPU6050 mpu;
+
+
+static long distance = 0;
+boolean freefallDetected = false;
 
 void MPU_Setup(void){
   
