@@ -5,7 +5,7 @@
 #include "TMRpcm.h"
 
 
-#define SD_ChipSelectPin 10
+#define SD_ChipSelectPin 53
 TMRpcm tmrpcm;
 File root;
 

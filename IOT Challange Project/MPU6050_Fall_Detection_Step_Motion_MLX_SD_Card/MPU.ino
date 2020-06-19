@@ -32,7 +32,7 @@ void MPU_Setup(void){
   
   checkSettings();
 
-  attachInterrupt(0, doInt, RISING);
+  attachInterrupt(0, doInt, RISING);// Int pin in mega 0 
 
 }
 
