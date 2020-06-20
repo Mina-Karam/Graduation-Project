@@ -113,7 +113,8 @@ void Nokia_Loop(void){
       
   if(distance >= 20){
       display.clearDisplay();
-      display.setCursor(3, 15);   
+      display.setCursor(3, 15);  
+      delay(1000);
       display.println("Up tp level 2"); 
       delay(1000);
       display.clearDisplay();
