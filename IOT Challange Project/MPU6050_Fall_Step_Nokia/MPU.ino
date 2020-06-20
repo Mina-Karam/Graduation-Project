@@ -51,10 +51,10 @@ void MPU_Loop(void){
     distance++;
     Serial.print("Step :");
     Serial.println(distance);
-    if(distance == 20){
-      Serial.println("\nFall Detection !!!! ");
-      Serial.println("Calling no. +01271172090 ");
-    }
+//    if(distance == 20){
+//      Serial.println("\nFall Detection !!!! ");
+//      Serial.println("Calling no. +01271172090 ");
+//    }
   } 
   if (freefallDetected)
   {

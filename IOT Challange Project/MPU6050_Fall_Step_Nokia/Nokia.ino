@@ -105,16 +105,21 @@ void Nokia_Setup(void){
 }
 
 void Nokia_Loop(void){
-  display.setCursor(3, 15);
-  display.print("Step: ");
-  display.println(distance);
-  if(distance == 200){
-  display.clearDisplay();   
-  display.setCursor(3, 1);
-  display.print("Step: ");
-  display.display();
+      display.setCursor(3, 15);
+      display.println("Level 1\n");
+      display.print("Step: ");
+      display.println(distance);
+      display.display();
+      
+  if(distance >= 20){
+      display.clearDisplay();
+      display.setCursor(3, 15);   
+      display.println("Up tp level 2"); 
+      delay(1000);
+      display.clearDisplay();
+      
   }
-  display.display();
+      
 }
 
 void draw_text(byte x_pos, byte y_pos, char *text)
