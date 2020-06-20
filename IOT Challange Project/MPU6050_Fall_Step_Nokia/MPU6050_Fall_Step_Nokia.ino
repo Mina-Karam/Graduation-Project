@@ -8,10 +8,6 @@ void setup()
   MPU_Setup();
 }
 
-
-
-
-
 void loop()
 {
   MPU_Loop();

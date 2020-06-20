@@ -8,7 +8,7 @@ void Nokia_Setup(void){
   // initialize the display
   display.begin();
  
-  display.setContrast(50);
+  display.setContrast(100);
 
   display.clearDisplay();   
   display.display();
