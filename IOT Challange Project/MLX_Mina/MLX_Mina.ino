@@ -11,7 +11,6 @@ Serial.begin(9600);
    mlx.begin();
   mlxDelay.start(1000);
 }
-
 void loop() {
 if(mlxDelay.justFinished()){
   Serial.print("Ambient = "); Serial.println(mlx.readAmbientTempC()); 
