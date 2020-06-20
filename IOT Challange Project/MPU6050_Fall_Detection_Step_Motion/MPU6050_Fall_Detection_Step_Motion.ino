@@ -22,7 +22,7 @@ void setup()
 
   mpu.setAccelPowerOnDelay(MPU6050_DELAY_3MS);
 
-  //mpu.setIntFreeFallEnabled(false);  
+  mpu.setIntFreeFallEnabled(false);  
   mpu.setIntZeroMotionEnabled(false);
   mpu.setIntMotionEnabled(false);
   
@@ -34,10 +34,10 @@ void setup()
   mpu.setZeroMotionDetectionThreshold(4);
   mpu.setZeroMotionDetectionDuration(2);	
 
-  //mpu.setFreeFallDetectionThreshold(1);
-  //mpu.setFreeFallDetectionDuration(2);  
+  mpu.setFreeFallDetectionThreshold(1);
+  mpu.setFreeFallDetectionDuration(2);  
   
-  //checkSettings();
+  checkSettings();
 
   //attachInterrupt(0, doInt, RISING);
 
@@ -134,7 +134,7 @@ void loop()
   } 
   if (freefallDetected)
   {
-    //Serial.println("freefallDetected");
+    Serial.println("freefallDetected");
   }
   delay(50);
 }
