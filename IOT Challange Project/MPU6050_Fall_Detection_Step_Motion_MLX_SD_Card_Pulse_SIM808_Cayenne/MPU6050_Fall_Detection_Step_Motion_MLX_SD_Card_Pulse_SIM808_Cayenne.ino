@@ -9,7 +9,7 @@ void setup()
   
   Cayenne_Setup();
   SIM808_Setup();
-  GPS_Setup():
+  GPS_Setup();
   MLX_Setup();
   MPU_Setup();
   SD_Setup();
