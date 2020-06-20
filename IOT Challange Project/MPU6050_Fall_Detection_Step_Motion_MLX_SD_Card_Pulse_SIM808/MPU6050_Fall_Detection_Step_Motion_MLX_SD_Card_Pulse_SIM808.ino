@@ -6,7 +6,10 @@
 void setup() 
 {
   Serial.begin(9600);
-
+  
+  Cayenne_Setup();
+  SIM808_Setup();
+  GPS_Setup():
   MLX_Setup();
   MPU_Setup();
   SD_Setup();

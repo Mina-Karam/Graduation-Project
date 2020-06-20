@@ -10,6 +10,30 @@ float longitude_old = 0.0;
 
 float latitude_new = 0.0;
 float longitude_new = 0.0;
+
+void SIM808_Setup(void){
+  //******** Initialize sim808 module *************
+  while (!sim808.init()) {
+    delay(500);
+    Serial.print("Sim808 init error\r\n");
+  }
+}
+void GPS_Setup(void){
+
+  //************* Turn on the GPS power************
+  if ( sim808.attachGPS())
+    Serial.println("Open the GPS power success");
+  else
+    Serial.println("Open the GPS power failure");
+}
+
+void SIM808_Loop(void){
+  if (sim808.getGPS()) {
+    Get_GPS();
+    Get_Time();
+  }
+}
+
 void Get_GPS(){
   /********* Show in serial ***********/
 
@@ -54,20 +78,4 @@ void Get_Time(){
     Serial.print(sim808.GPSdata.minute);
     Serial.print(":");
     Serial.print(sim808.GPSdata.second);
-}
-
-void SIM808_Setup(void){
-  //******** Initialize sim808 module *************
-  while (!sim808.init()) {
-    delay(500);
-    Serial.print("Sim808 init error\r\n");
-  }
-}
-void GPS_Setup(void){
-
-  //************* Turn on the GPS power************
-  if ( sim808.attachGPS())
-    Serial.println("Open the GPS power success");
-  else
-    Serial.println("Open the GPS power failure");
 }

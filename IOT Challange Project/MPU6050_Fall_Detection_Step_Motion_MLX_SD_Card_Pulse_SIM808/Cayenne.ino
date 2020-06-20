@@ -17,5 +17,8 @@ char clientID[] = "7a2d2c30-abe6-11ea-b767-3f1a8f1211ba";
 
 void Cayenne_Setup(void){
    Cayenne.begin(username, password, clientID, Serial3, apn, gprsLogin, gprsPassword, pin);
-   
+}
+
+void Cayenne_Loop(void){
+  
 }
