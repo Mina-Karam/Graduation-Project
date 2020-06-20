@@ -1,7 +1,7 @@
 /******** Global library ***********/
 #include <millisDelay.h>        
 #include <Wire.h> 
-#include "SPI.h"
+#include <SPI.h>
 
 void setup() 
 {

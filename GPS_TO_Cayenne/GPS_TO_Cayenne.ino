@@ -12,11 +12,11 @@
 #include <DFRobot_sim808.h>
 #include <SoftwareSerial.h>
 
-#define PIN_RX    D7
-#define PIN_TX    D8
-
-SoftwareSerial mygps(PIN_RX,PIN_TX);
-DFRobot_SIM808 sim808(&mygps);//Connect RX,TX,PWR,
+//#define PIN_RX    D7
+//#define PIN_TX    D8
+//
+//SoftwareSerial mygps(PIN_RX,PIN_TX);
+DFRobot_SIM808 sim808(&Serial3);//Connect RX,TX,PWR,
 
 // GSM connection info.
 const char apn[] = ""; // Access point name. Leave empty if it is not needed.
@@ -55,7 +55,7 @@ void setup() {
   else 
       Serial.println("Open the GPS power failure");
   
-  Cayenne_GSM.begin(username, password, clientID, mygps, apn, gprsLogin, gprsPassword, pin);
+  Cayenne.begin(username, password, clientID, mygps, apn, gprsLogin, gprsPassword, pin);
 }
 
 void loop() {
@@ -85,6 +85,6 @@ void loop() {
     buffer[offset++] = ']';
     buffer[offset] = 0;
 
-  Cayenne_GSM.virtualWrite(20, buffer, "gps", "m");
+  Cayenne.virtualWrite(20, buffer, "gps", "m");
   }
 }
