@@ -17,3 +17,7 @@ void Nokia_Setup(void){
   display.print("For Elzahimer");
   display.display();
 }
+
+void Nokia_Loop(void){
+  
+}
