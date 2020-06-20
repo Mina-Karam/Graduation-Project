@@ -55,3 +55,19 @@ void Get_Time(){
     Serial.print(":");
     Serial.print(sim808.GPSdata.second);
 }
+
+void SIM808_Setup(void){
+  //******** Initialize sim808 module *************
+  while (!sim808.init()) {
+    delay(500);
+    Serial.print("Sim808 init error\r\n");
+  }
+}
+void GPS_Setup(void){
+
+  //************* Turn on the GPS power************
+  if ( sim808.attachGPS())
+    Serial.println("Open the GPS power success");
+  else
+    Serial.println("Open the GPS power failure");
+}
