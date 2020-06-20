@@ -2,14 +2,14 @@
 #include <Adafruit_PCD8544.h>  // include adafruit PCD8544 (Nokia 5110) library
 
 // Nokia 5110 LCD module connections (CLK, DIN, D/C, CS, RST)
-Adafruit_PCD8544 display = Adafruit_PCD8544(D4, D3, D2, D1, D0);
+Adafruit_PCD8544 display = Adafruit_PCD8544(39, 37, 35, 33, 31);
 
 void Nokia_Setup(void){
   // initialize the display
   display.begin();
  
   display.setContrast(50);
- 
+
   display.clearDisplay();   
   display.display();
  
@@ -18,5 +18,19 @@ void Nokia_Setup(void){
   display.setCursor(3, 0);
   display.println("omega 6 clock");
   display.print("for elzahimer");
+  display.display();
+}
+
+void Nokia_Loop(void){
+  display.setCursor(3, 0);
+  display.println("omega 6 clock");
+  display.print("for elzahimer");
+  display.display();
+}
+
+void draw_text(byte x_pos, byte y_pos, char *text)
+{
+  display.setCursor(x_pos, y_pos);
+  display.print(text);
   display.display();
 }

@@ -4,7 +4,7 @@
 void setup() 
 {
   Serial.begin(9600);
-  
+  Nokia_Setup();
   MPU_Setup();
 }
 
@@ -15,5 +15,6 @@ void setup()
 void loop()
 {
   MPU_Loop();
+  Nokia_Loop();
   delay(50);
 }
