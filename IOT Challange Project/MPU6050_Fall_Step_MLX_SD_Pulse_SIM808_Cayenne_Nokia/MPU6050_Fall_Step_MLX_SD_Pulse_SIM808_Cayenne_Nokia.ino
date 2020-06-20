@@ -6,6 +6,7 @@
 void setup() 
 {
   Serial.begin(9600);
+  Serial3.begin(9600);
   
   Cayenne_Setup();
   SIM808_Setup();

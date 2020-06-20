@@ -22,7 +22,7 @@ void Pulse_Loop(void){
       Serial.println("♥  A HeartBeat Happened ! "); // If test is "true", print a message "a heartbeat happened".
       Serial.print("BPM: ");                        // Print phrase "BPM: " 
       Serial.println(myBPM);                        // Print the value inside of myBPM. 
-      //Cayenne.virtualWrite(2, myBPM);
+      Cayenne.virtualWrite(2, myBPM);
       pulseSensor.outputBeat();
       } 
 }

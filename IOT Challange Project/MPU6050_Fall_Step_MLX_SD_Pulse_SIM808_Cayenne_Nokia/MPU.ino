@@ -32,7 +32,7 @@ void MPU_Setup(void){
   
   checkSettings();
 
-  attachInterrupt(0, doInt, RISING);// Int pin in mega 0 
+  //attachInterrupt(0, doInt, RISING);// Int pin in mega 0 
 
 }
 
@@ -44,6 +44,7 @@ void MPU_Loop(void){
   {
     distance++;
     Serial.println(distance);
+    Cayenne.virtualWrite(5, distance);
   } 
 
   if (freefallDetected)

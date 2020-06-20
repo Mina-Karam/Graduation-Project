@@ -41,7 +41,7 @@ float z = 200.0;
 void setup() {
     // put your setup code here, to run once:
   Serial.begin(9600);
-  mygps.begin(9600);
+  Serial3.begin(9600);
   
    //******** Initialize sim808 module *************
   while(!sim808.init()) { 
