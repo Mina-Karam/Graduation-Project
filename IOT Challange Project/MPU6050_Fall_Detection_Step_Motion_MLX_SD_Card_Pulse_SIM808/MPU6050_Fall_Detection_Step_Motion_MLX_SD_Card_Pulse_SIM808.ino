@@ -19,6 +19,7 @@ void setup()
 
 void loop()
 {
+  SIM808_Loop();
   MPU_Loop();
   MLX_Loop();
   SD_Loop();
