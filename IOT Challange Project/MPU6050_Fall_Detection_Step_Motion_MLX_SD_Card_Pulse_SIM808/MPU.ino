@@ -1,17 +1,13 @@
-
-
-#include <Wire.h>
-#include <MPU6050.h>
-
+#include <MPU6050.h>   
+         
 MPU6050 mpu;
+
 
 static long distance = 0;
 boolean freefallDetected = false;
 
-void setup() 
-{
-  Serial.begin(9600);
-
+void MPU_Setup(void){
+  
   Serial.println("Initialize MPU6050");
 
   while(!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_16G))
@@ -22,7 +18,7 @@ void setup()
 
   mpu.setAccelPowerOnDelay(MPU6050_DELAY_3MS);
 
-  //mpu.setIntFreeFallEnabled(false);  
+  mpu.setIntFreeFallEnabled(false);  
   mpu.setIntZeroMotionEnabled(false);
   mpu.setIntMotionEnabled(false);
   
@@ -31,25 +27,38 @@ void setup()
   mpu.setMotionDetectionThreshold(30);
   mpu.setMotionDetectionDuration(10);
 
-  mpu.setZeroMotionDetectionThreshold(4);
-  mpu.setZeroMotionDetectionDuration(2);	
-
-  //mpu.setFreeFallDetectionThreshold(1);
-  //mpu.setFreeFallDetectionDuration(2);  
+//  mpu.setFreeFallDetectionThreshold(17);
+//  mpu.setFreeFallDetectionDuration(2);  
   
-  //checkSettings();
+  checkSettings();
 
-  //attachInterrupt(0, doInt, RISING);
+  attachInterrupt(0, doInt, RISING);// Int pin in mega 0 
 
 }
 
-void doInt()
+void MPU_Loop(void){
+  Vector rawAccel = mpu.readRawAccel();
+  Activites act = mpu.readActivites();
+  
+  if (act.isActivity)
+  {
+    distance++;
+    Serial.println(distance);
+  } 
+
+  if (freefallDetected)
+  {
+    Serial.println("freefallDetected");
+  }
+}
+
+void doInt(void)
 {
   Serial.println("freefallDetectedInterrupt");
   freefallDetected = true;
 }
 
-void checkSettings()
+void checkSettings(void)
 {
   Serial.println();
   
@@ -115,26 +124,4 @@ void checkSettings()
   }  
   
   Serial.println();
-}
-
-void loop()
-{
-  Vector rawAccel = mpu.readRawAccel();
-  Activites act = mpu.readActivites();
-  
-  if (act.isActivity)
-  {
-    distance++;
-    Serial.print("Step :");
-    Serial.println(distance);
-    if(distance == 20){
-      Serial.println("\nFall Detection !!!! ");
-      Serial.println("Calling no. +01271172090 ");
-    }
-  } 
-  if (freefallDetected)
-  {
-    //Serial.println("freefallDetected");
-  }
-  delay(50);
 }
