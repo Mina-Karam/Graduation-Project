@@ -1,4 +1,4 @@
-#define USE_ARDUINO_INTERRUPTS true    // Set-up low-level interrupts for most acurate BPM math.
+#define USE_ARDUINO_INTERRUPTS false    // Set-up low-level interrupts for most acurate BPM math.
 #include <PulseSensorPlayground.h>     // Includes the PulseSensorPlayground Library.   
 
 PulseSensorPlayground pulseSensor;  // Creates an instance of the PulseSensorPlayground object called "pulseSensor"
@@ -17,10 +17,12 @@ void Pulse_Setup(void){
 }
 
 void Pulse_Loop(void){
+    pulseSensor.outputSample();
   if (pulseSensor.sawStartOfBeat()) {
       Serial.println("♥  A HeartBeat Happened ! "); // If test is "true", print a message "a heartbeat happened".
       Serial.print("BPM: ");                        // Print phrase "BPM: " 
       Serial.println(myBPM);                        // Print the value inside of myBPM. 
       //Cayenne.virtualWrite(2, myBPM);
+      pulseSensor.outputBeat();
       } 
 }
