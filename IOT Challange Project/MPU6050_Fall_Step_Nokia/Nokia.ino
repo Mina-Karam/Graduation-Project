@@ -8,12 +8,12 @@ void Nokia_Setup(void){
   // initialize the display
   display.begin();
  
-  display.setContrast(100);
+  display.setContrast(50);
 
   display.clearDisplay();   
   display.display();
  
-  display.setTextSize(1);
+  display.setTextSize(2);
   display.setTextColor(BLACK, WHITE);
   display.setCursor(3, 0);
   display.println("omega 6 clock");
