@@ -15,16 +15,15 @@ void Nokia_Setup(void){
  
   display.setTextSize(1);
   display.setTextColor(BLACK, WHITE);
-  display.setCursor(3, 0);
-  display.println("omega 6 clock");
-  display.print("for elzahimer");
+  display.setCursor(15, 0);
+  display.println("omega 6 ");
   display.display();
 }
 
 void Nokia_Loop(void){
-  display.setCursor(3, 0);
-  display.println("omega 6 clock");
-  display.print("for elzahimer");
+  display.setCursor(3, 15);
+  display.print("Step: ");
+  display.println(distance);
   display.display();
 }
 
