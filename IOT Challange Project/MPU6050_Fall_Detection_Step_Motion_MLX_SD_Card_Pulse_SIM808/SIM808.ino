@@ -1,3 +1,15 @@
+#include <DFRobot_sim808.h>
+
+DFRobot_SIM808 sim808(&Serial3);//Connect RX,TX,PWR
+
+float latitude_erorr = 0.05891585413;
+float longitude_erorr = 0.1298821647;
+
+float latitude_old = 0.0;
+float longitude_old = 0.0;
+
+float latitude_new = 0.0;
+float longitude_new = 0.0;
 void Get_GPS(){
   /********* Show in serial ***********/
 
